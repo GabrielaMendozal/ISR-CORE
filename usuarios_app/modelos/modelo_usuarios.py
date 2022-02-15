@@ -23,12 +23,7 @@ class Usuario:
         resultado = connectToMySQL("usuarios_db").query_db(query,nuevoUsuario)
         return resultado
 
-    #@classmethod
-    #def seleccionarUsuario(klass, id):
-     #   query = "SELECT * FROM usuarios WHERE id = %(id);"
-    #  resultado = connectToMySQL ("usuarios_db").query_db (query,id)
-    # miobjeto = klass(resultado[0])
-        #return resultado
+
 
     @classmethod
     def verificaUsuario (cls, usuario):
@@ -53,15 +48,7 @@ class Usuario:
         return listaUsuarios
 
 
-    @staticmethod
-    def validate_user( cls,email ):
-        is_valid = True
-        query = "SELECT * FROM usuarios WHERE email = %(email)s;"
-        resultado = connectToMySQL("usuarios_db").query_db(query,email)
-        print (type (resultado, "SOY UN VALIDADOR"))
-        if len(resultado) < 1:
-            return False
-        return cls(results[0])
+
 
 
 
@@ -70,6 +57,7 @@ class Usuario:
         is_valid = True
         query = "SELECT * FROM usuarios WHERE email = %(email)s;"
         resultado = connectToMySQL("usuarios_db").query_db(query,usuario)
+        print (resultado, "YO QUE SOY QUE SOY YO")
         if len(resultado) >= 1:
             flash("Email en uso.","registro")
             is_valid=False

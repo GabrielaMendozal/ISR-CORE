@@ -16,8 +16,11 @@ def despliegaRegistroYLogin():
 @app.route ('/dashboard', methods =['GET'] )
 def despliegaDasboard():
     if "email" in session:
-        listaUsuarios = Usuario.obtenerListaUsuarios()
-        return render_template ('dashboard.html', usuarios = listaUsuarios)
+        usuario = {
+            "email" : session ["email"]
+        }
+        resultado = Usuario.verificaUsuario(usuario)
+        return render_template ('dashboard.html', resultado=resultado)
     else:
         return redirect ("/")
 
@@ -88,10 +91,5 @@ def logoutUsuario():
 
 
 
-#@app.route ('/usuario/<id>')
-#def unusuario(id):
-#    miusuario = Usuario.seleccionarUsuario(id)
-#    return render_template('index2.html', miusuario=miusuario)
-
-
+#bye
 
